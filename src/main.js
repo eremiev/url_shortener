@@ -27,6 +27,9 @@ const store = new Vuex.Store({
         },
         updateShortUrlArray: (state, payload) => {
             state.shortUrlsArray.push(payload);
+        },
+        clearShortUrlArray: (state) => {
+            state.shortUrlsArray = [];
         }
     }
 });

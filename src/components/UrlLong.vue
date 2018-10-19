@@ -25,6 +25,9 @@
         computed: {
             longUrlsArray: function () {
                 return this.$store.getters.longUrlsArray
+            },
+            shortUrlsArray: function () {
+                return this.$store.getters.shortUrlsArray
             }
         },
         methods: {
@@ -32,30 +35,27 @@
                 this.$store.commit('updateLongUrlArray', this.longUrls.split("\n"));
             },
             makeShort: function () {
-                this.loading = true;
                 let self = this;
+                this.loading = true;
+                this.$store.commit('clearShortUrlArray');
                 let key = "";
+
+
                 this.longUrlsArray.forEach(function (url) {
                     axios.post("https://www.googleapis.com/urlshortener/v1/url?key=" + key, {'longUrl': url})
                         .then((response) => {
                             // eslint-disable-next-line
-                            console.log(response);
+//                            console.log(response);
                             self.$store.commit('updateShortUrlArray', response.data.id ? response.data.id : response.data.longUrl);
+                            if (self.shortUrlsArray.length === self.longUrlsArray.length)
+                                self.loading = false;
                         }, (error) => {
                             // eslint-disable-next-line
                             console.log(error);
                         })
                 });
-
-
             }
-        },
-        watch: {
-            shortUrlsArray: function (watched) {
-                if (watched.length === this.longUrlsArray.length)
-                    this.loading = false;
-            }
-        },
+        }
     }
 </script>
 
