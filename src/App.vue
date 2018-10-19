@@ -1,28 +1,34 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div class="container">
+        <header class="text-center">URL</header>
+        <div class="row">
+            <UrlLong class="col-lg-6" type="Long"></UrlLong>
+            <UrlShort class="col-lg-6" type="Short"></UrlShort>
+        </div>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import UrlLong from './components/UrlLong.vue'
+    import UrlShort from './components/UrlShort.vue'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'app',
+        components: {
+            UrlLong,
+            UrlShort
+        }
+    }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    textarea {
+        background: white;
+        border: 0;
+        box-shadow: inset 0 0 5px black;
+        min-height: 300px;
+        /*white-space: pre-wrap;*/
+        /*word-wrap: break-word;*/
+        /*font-family: inherit;*/
+    }
 </style>
