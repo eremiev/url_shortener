@@ -10,6 +10,7 @@
 
 <script>
     import axios from 'axios';
+    import config from '../config/config';
 
     export default {
         name: 'UrlLong',
@@ -38,11 +39,9 @@
                 let self = this;
                 this.loading = true;
                 this.$store.commit('clearShortUrlArray');
-                let key = "";
-
 
                 this.longUrlsArray.forEach(function (url) {
-                    axios.post("https://www.googleapis.com/urlshortener/v1/url?key=" + key, {'longUrl': url})
+                    axios.post(config.GOOGLE_SHORTENER_URL + config.GOOGLE_KEY, {'longUrl': url})
                         .then((response) => {
                             // eslint-disable-next-line
 //                            console.log(response);
