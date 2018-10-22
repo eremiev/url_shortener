@@ -1,15 +1,19 @@
 import Vue from 'vue'
-import BootstrapVue from 'bootstrap-vue'
 import Vuex from 'vuex'
+import VTooltip from 'v-tooltip'
+import BootstrapVue from 'bootstrap-vue'
+import VueClipboard from 'vue-clipboard2'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import App from './App.vue'
 
-Vue.config.productionTip = false;
-Vue.use(BootstrapVue);
 Vue.use(Vuex);
+Vue.use(VTooltip);
+Vue.use(BootstrapVue);
+Vue.use(VueClipboard);
+Vue.config.productionTip = false;
 
 const store = new Vuex.Store({
     state: {
